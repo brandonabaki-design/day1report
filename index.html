@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athena Education - Observation Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .hide-names .sensitive-name {
+            color: transparent !important;
+            background-color: #cbd5e1 !important;
+            border-radius: 0.25rem;
+            user-select: none;
+        }
+        @media print {
+            body { background-color: white; }
+            .card-shadow { box-shadow: none; border: 1px solid #e5e7eb; }
+            nav { display: none !important; }
+            main { padding-top: 2rem !important; }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Navigation / Header -->
+    <nav class="bg-white border-b border-gray-200 fixed w-full z-10 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center gap-3">
+                        <div class="w-8 h-8 bg-blue-600 text-white rounded flex items-center justify-center font-bold text-lg">
+                            AE
+                        </div>
+                        <div>
+                            <span class="font-bold text-xl text-gray-900">Al Wahda Private School</span>
+                            <p class="text-xs text-gray-500 font-medium tracking-wide uppercase">Online Learning Observation Report</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="text-sm text-gray-500 bg-gray-100 px-3 py-1.5 rounded-md font-medium print:hidden">
+                        Date: March 23, 2026
+                    </div>
+                    <button id="toggleNamesBtn" onclick="toggleNames()" class="print:hidden bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                        Hide Names
+                    </button>
+                    <button onclick="window.print()" class="print:hidden bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium flex items-center gap-2 transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        Save PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
+        
+        <!-- Tabs -->
+        <div class="border-b border-gray-200 mb-8 print:hidden">
+            <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+                <button onclick="switchTab('grades-1-4')" id="btn-grades-1-4" class="tab-btn border-blue-500 text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                    Grades 1 - 4 Overview
+                </button>
+                <button onclick="switchTab('kg')" id="btn-kg" class="tab-btn border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors">
+                    Kindergarten (KG) Overview
+                </button>
+            </nav>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TAB 1: GRADES 1 - 4 CONTENT                -->
+        <!-- ========================================== -->
+        <div id="grades-1-4" class="tab-content active">
+            <!-- KPIs Row -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white rounded-xl p-6 card-shadow border-t-4 border-blue-500">
+                    <div class="text-sm font-medium text-gray-500 uppercase tracking-wide">Total Observations</div>
+                    <div class="mt-2 text-3xl font-bold text-gray-900">12</div>
+                    <div class="mt-1 text-sm text-blue-600 font-medium">Across 10 Teachers</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 card-shadow border-t-4 border-emerald-500">
+                    <div class="text-sm font-medium text-gray-500 uppercase tracking-wide">Overall Compliance</div>
+                    <div class="mt-2 text-3xl font-bold text-gray-900">96%</div>
+                    <div class="mt-1 text-sm text-emerald-600 font-medium">69/72 Criteria Met</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 card-shadow border-t-4 border-amber-500">
+                    <div class="text-sm font-medium text-gray-500 uppercase tracking-wide">Tech Utilization</div>
+                    <div class="mt-2 text-3xl font-bold text-gray-900">92%</div>
+                    <div class="mt-1 text-sm text-amber-600 font-medium">1 Lesson Requires Tech Update</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 card-shadow border-t-4 border-purple-500">
+                    <div class="text-sm font-medium text-gray-500 uppercase tracking-wide">Key Focus Area</div>
+                    <div class="mt-2 text-xl font-bold text-gray-900 mt-3">Differentiation</div>
+                    <div class="mt-1 text-sm text-purple-600 font-medium">Highlighted in 83% of reports</div>
+                </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                <!-- Radar Chart -->
+                <div class="bg-white rounded-xl p-6 card-shadow lg:col-span-2">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">Observation Criteria Performance</h3>
+                    <div class="relative h-72 w-full">
+                        <canvas id="criteriaChart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Doughnut Chart -->
+                <div class="bg-white rounded-xl p-6 card-shadow">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">Observer Coverage</h3>
+                    <div class="relative h-64 w-full flex items-center justify-center">
+                        <canvas id="observerChart"></canvas>
+                    </div>
+                    <div class="mt-4 flex justify-center gap-6 text-sm">
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-blue-500"></div>
+                            <span class="text-gray-600 sensitive-name">Leila VP</span> <span class="text-gray-600">(6)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-indigo-500"></div>
+                            <span class="text-gray-600 sensitive-name">Brandon A.</span> <span class="text-gray-600">(4)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                            <span class="text-gray-600 sensitive-name">Sobia G.</span> <span class="text-gray-600">(2)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actionable Insights & Key Findings -->
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Key Areas for Improvement & Action Plan</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                
+                <!-- Insight 1 -->
+                <div class="bg-white rounded-xl card-shadow overflow-hidden flex flex-col">
+                    <div class="bg-purple-50 p-4 border-b border-purple-100 flex items-center gap-3">
+                        <div class="p-2 bg-purple-100 text-purple-700 rounded-lg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                        </div>
+                        <h3 class="font-bold text-purple-900">Task Differentiation</h3>
+                    </div>
+                    <div class="p-5 flex-1">
+                        <p class="text-sm text-gray-600 mb-4"><strong>Observation:</strong> While support for SEN is mostly effective, multiple reports highlight that students are often given the same starting tasks. Extensions are provided only <em>after</em> task completion.</p>
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <p class="text-xs font-bold text-gray-500 uppercase mb-2">Suggested Action</p>
+                            <ul class="text-sm text-gray-800 space-y-2 list-disc pl-4">
+                                <li>Provide tiered activities allowing students to start at varying challenge levels.</li>
+                                <li>Host a mini-CPD (Continual Professional Development) on creating differentiated entry points.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insight 2 -->
+                <div class="bg-white rounded-xl card-shadow overflow-hidden flex flex-col">
+                    <div class="bg-amber-50 p-4 border-b border-amber-100 flex items-center gap-3">
+                        <div class="p-2 bg-amber-100 text-amber-700 rounded-lg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h3 class="font-bold text-amber-900">Digital Tool Diversity</h3>
+                    </div>
+                    <div class="p-5 flex-1">
+                        <p class="text-sm text-gray-600 mb-4"><strong>Observation:</strong> There is an over-reliance on basic tools like the Zoom/Teams chatbox for monitoring student work, which is inefficient for formative assessment.</p>
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <p class="text-xs font-bold text-gray-500 uppercase mb-2">Suggested Action</p>
+                            <ul class="text-sm text-gray-800 space-y-2 list-disc pl-4">
+                                <li>Mandate the use of collaborative boards (e.g., <strong>Padlet</strong>, <strong>ClassKick</strong>, <strong>Whiteboard.fi</strong>).</li>
+                                <li>Share a "Digital Tool of the Week" highlighting effective online monitoring techniques.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insight 3 -->
+                <div class="bg-white rounded-xl card-shadow overflow-hidden flex flex-col">
+                    <div class="bg-blue-50 p-4 border-b border-blue-100 flex items-center gap-3">
+                        <div class="p-2 bg-blue-100 text-blue-700 rounded-lg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                        </div>
+                        <h3 class="font-bold text-blue-900">Lesson Visibility & Management</h3>
+                    </div>
+                    <div class="p-5 flex-1">
+                        <p class="text-sm text-gray-600 mb-4"><strong>Observation:</strong> Lesson objectives sometimes disappear from the screen during independent work. Additionally, time management during "Explore" phases occasionally runs long.</p>
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <p class="text-xs font-bold text-gray-500 uppercase mb-2">Suggested Action</p>
+                            <ul class="text-sm text-gray-800 space-y-2 list-disc pl-4">
+                                <li>Ensure objectives and success criteria are pinned in the chat or embedded on every slide.</li>
+                                <li>Use visible digital timers for independent tasks to maintain lesson pacing.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Data Table -->
+            <div class="bg-white rounded-xl card-shadow overflow-hidden">
+                <div class="px-6 py-5 border-b border-gray-200 flex justify-between items-center bg-gray-50">
+                    <h3 class="text-lg font-bold text-gray-900">Observation Log: Grades 1-4</h3>
+                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">12 Records</span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left">
+                        <thead class="text-xs text-gray-500 uppercase bg-white border-b border-gray-200">
+                            <tr>
+                                <th scope="col" class="px-6 py-4">Teacher / Subject</th>
+                                <th scope="col" class="px-6 py-4">Time</th>
+                                <th scope="col" class="px-6 py-4">Observer</th>
+                                <th scope="col" class="px-6 py-4">Status</th>
+                                <th scope="col" class="px-6 py-4 w-1/3">Key Feedback Snippet</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <!-- Grades 1-4 Rows -->
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Haneen 1A</span><br><span class="text-xs text-gray-500 font-normal">English</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">08:50</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Leila VP</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Consider providing more variety in differentiation. Excellent overall lesson delivery.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Ms. Shafia</span><br><span class="text-xs text-gray-500 font-normal">Math (2A)</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">09:40</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Leila VP</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Fair level of student participation. Consider providing more variety.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Ms. Heba 2C</span><br><span class="text-xs text-gray-500 font-normal">Science</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">09:50</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Leila VP</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Good lesson flow. Consider diversifying tech tools.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Nada Atef 1B</span><br><span class="text-xs text-gray-500 font-normal">Math</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">10:50</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Leila VP</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Success criteria were explicit. Student participation observed.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Nada Ezzat</span><br><span class="text-xs text-gray-500 font-normal">Science (2B)</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">08:30</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Leila VP</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Praise was used effectively. Smooth lesson delivery.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Rania El Husseini</span><br><span class="text-xs text-gray-500 font-normal">English (3B)</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">11:10</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Leila VP</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Some student participation. Good overall lesson delivery.</td>
+                            </tr>
+                            <tr class="hover:bg-red-50 transition-colors">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Rania El Husseini</span><br><span class="text-xs text-gray-500 font-normal">General</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">13:34</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Brandon A.</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-red-500 inline-block mr-2"></span>Action Needed</td>
+                                <td class="px-6 py-4 text-gray-800 font-medium">Objectives not visible. Students given same task (no initial differentiation). Chat box inefficient for monitoring.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Shahida Ayoub</span><br><span class="text-xs text-gray-500 font-normal">General</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">11:12</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Brandon A.</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Extension tasks available. Strong subject knowledge. Consider Padlet/Classkick for work sharing.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Hager</span><br><span class="text-xs text-gray-500 font-normal">General</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">10:55</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Brandon A.</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">High level of participation. Consider a clearer reward/consequence system.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Nada Ezzat</span><br><span class="text-xs text-gray-500 font-normal">General</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">08:57</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Brandon A.</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Excellent questioning for critical thinking. Seamless platform integration.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Nada Ezzat</span><br><span class="text-xs text-gray-500 font-normal">General</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">08:50</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Sobia Gulzar</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Consider providing more varied levels of challenge. Good use of scaffolding.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Ms. Shafia</span><br><span class="text-xs text-gray-500 font-normal">General</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">09:30</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Sobia Gulzar</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Interactive tools used effectively. Incorporate a wider range of challenge levels.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TAB 2: KINDERGARTEN (KG) CONTENT           -->
+        <!-- ========================================== -->
+        <div id="kg" class="tab-content">
+            <!-- KPIs Row KG -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white rounded-xl p-6 card-shadow border-t-4 border-blue-500">
+                    <div class="text-sm font-medium text-gray-500 uppercase tracking-wide">Total KG Observations</div>
+                    <div class="mt-2 text-3xl font-bold text-gray-900">4</div>
+                    <div class="mt-1 text-sm text-blue-600 font-medium">Across 4 Teachers</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 card-shadow border-t-4 border-emerald-500">
+                    <div class="text-sm font-medium text-gray-500 uppercase tracking-wide">Overall Compliance</div>
+                    <div class="mt-2 text-3xl font-bold text-gray-900">100%</div>
+                    <div class="mt-1 text-sm text-emerald-600 font-medium">24/24 Criteria Met</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 card-shadow border-t-4 border-amber-500">
+                    <div class="text-sm font-medium text-gray-500 uppercase tracking-wide">Tech Utilization</div>
+                    <div class="mt-2 text-3xl font-bold text-gray-900">100%</div>
+                    <div class="mt-1 text-sm text-amber-600 font-medium">Tools used effectively</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 card-shadow border-t-4 border-purple-500">
+                    <div class="text-sm font-medium text-gray-500 uppercase tracking-wide">Key Focus Area</div>
+                    <div class="mt-2 text-xl font-bold text-gray-900 mt-3">Level of Challenge</div>
+                    <div class="mt-1 text-sm text-purple-600 font-medium">Highlight in 50% of reports</div>
+                </div>
+            </div>
+
+            <!-- Charts Row KG -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                <!-- Radar Chart KG -->
+                <div class="bg-white rounded-xl p-6 card-shadow lg:col-span-2">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">KG Observation Criteria Performance</h3>
+                    <div class="relative h-72 w-full">
+                        <canvas id="criteriaChartKG"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Doughnut Chart KG -->
+                <div class="bg-white rounded-xl p-6 card-shadow">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">Observer Coverage (KG)</h3>
+                    <div class="relative h-64 w-full flex items-center justify-center">
+                        <canvas id="observerChartKG"></canvas>
+                    </div>
+                    <div class="mt-4 flex justify-center gap-6 text-sm">
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                            <span class="text-gray-600 sensitive-name">Sobia Gulzar</span> <span class="text-gray-600">(4)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actionable Insights KG -->
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">KG Specific Feedback & Action Plan</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                
+                <!-- Insight 1 -->
+                <div class="bg-white rounded-xl card-shadow overflow-hidden flex flex-col">
+                    <div class="bg-purple-50 p-4 border-b border-purple-100 flex items-center gap-3">
+                        <div class="p-2 bg-purple-100 text-purple-700 rounded-lg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                        </div>
+                        <h3 class="font-bold text-purple-900">Pushing the Ceiling</h3>
+                    </div>
+                    <div class="p-5 flex-1">
+                        <p class="text-sm text-gray-600 mb-4"><strong>Observation:</strong> Teachers are providing very good scaffolding to support learning, but multiple reports note a need to provide more varied levels of <em>challenge</em> for early finishers/advanced learners.</p>
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <p class="text-xs font-bold text-gray-500 uppercase mb-2">Suggested Action</p>
+                            <ul class="text-sm text-gray-800 space-y-2 list-disc pl-4">
+                                <li>Create "challenge cards" or extension activities built into the standard KG daily routine.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insight 2 -->
+                <div class="bg-white rounded-xl card-shadow overflow-hidden flex flex-col">
+                    <div class="bg-amber-50 p-4 border-b border-amber-100 flex items-center gap-3">
+                        <div class="p-2 bg-amber-100 text-amber-700 rounded-lg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                        </div>
+                        <h3 class="font-bold text-amber-900">Questioning Techniques</h3>
+                    </div>
+                    <div class="p-5 flex-1">
+                        <p class="text-sm text-gray-600 mb-4"><strong>Observation:</strong> Across almost all KG observations, there was consistent praise for the "excellent use of questioning to stimulate critical thinking" among young learners.</p>
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <p class="text-xs font-bold text-gray-500 uppercase mb-2">Suggested Action</p>
+                            <ul class="text-sm text-gray-800 space-y-2 list-disc pl-4">
+                                <li>Have strong teachers (like Miss Mona/Miss Adiba) share their questioning prompts in the next departmental meeting.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insight 3 -->
+                <div class="bg-white rounded-xl card-shadow overflow-hidden flex flex-col">
+                    <div class="bg-blue-50 p-4 border-b border-blue-100 flex items-center gap-3">
+                        <div class="p-2 bg-blue-100 text-blue-700 rounded-lg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <h3 class="font-bold text-blue-900">Smooth Execution</h3>
+                    </div>
+                    <div class="p-5 flex-1">
+                        <p class="text-sm text-gray-600 mb-4"><strong>Observation:</strong> Classroom routines, behavior expectations, and transitions were highly rated as smooth and constructive across the entire KG phase.</p>
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                            <p class="text-xs font-bold text-gray-500 uppercase mb-2">Suggested Action</p>
+                            <ul class="text-sm text-gray-800 space-y-2 list-disc pl-4">
+                                <li>Celebrate this high compliance rate! Continue focusing on building positive learning environments.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Data Table KG -->
+            <div class="bg-white rounded-xl card-shadow overflow-hidden">
+                <div class="px-6 py-5 border-b border-gray-200 flex justify-between items-center bg-gray-50">
+                    <h3 class="text-lg font-bold text-gray-900">Observation Log: Kindergarten</h3>
+                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">4 Records</span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left">
+                        <thead class="text-xs text-gray-500 uppercase bg-white border-b border-gray-200">
+                            <tr>
+                                <th scope="col" class="px-6 py-4">Teacher / Subject</th>
+                                <th scope="col" class="px-6 py-4">Time</th>
+                                <th scope="col" class="px-6 py-4">Observer</th>
+                                <th scope="col" class="px-6 py-4">Status</th>
+                                <th scope="col" class="px-6 py-4 w-1/3">Key Feedback Snippet</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <!-- KG Rows -->
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Miss Razeena</span><br><span class="text-xs text-gray-500 font-normal">KG</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">08:00</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Sobia Gulzar</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Strong planning and clear objectives. Consider providing more varied levels of challenge.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Miss Mona</span><br><span class="text-xs text-gray-500 font-normal">KG</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">08:20</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Sobia Gulzar</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Excellent questioning techniques. Good use of scaffolding. Smooth routines.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Miss Adiba</span><br><span class="text-xs text-gray-500 font-normal">KG</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">08:30</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Sobia Gulzar</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Excellent use of questioning. Interactive tools used effectively to enhance learning.</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Miss Iman</span><br><span class="text-xs text-gray-500 font-normal">KG</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">08:40</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Sobia Gulzar</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Good use of scaffolding. Consider providing more varied levels of challenge to extend students.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            // Hide all tab content
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            // Reset all tab buttons
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('border-blue-500', 'text-blue-600');
+                el.classList.add('border-transparent', 'text-gray-500');
+            });
+            
+            // Show target tab
+            document.getElementById(tabId).classList.add('active');
+            
+            // Highlight target button
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('border-transparent', 'text-gray-500');
+            activeBtn.classList.add('border-blue-500', 'text-blue-600');
+        }
+
+        // Toggle Names Logic
+        let namesHidden = false;
+        function toggleNames() {
+            namesHidden = !namesHidden;
+            const btn = document.getElementById('toggleNamesBtn');
+            if (namesHidden) {
+                document.body.classList.add('hide-names');
+                btn.innerText = 'Show Names';
+                btn.classList.add('bg-gray-800', 'text-white', 'hover:bg-gray-900');
+                btn.classList.remove('bg-gray-200', 'text-gray-800', 'hover:bg-gray-300');
+            } else {
+                document.body.classList.remove('hide-names');
+                btn.innerText = 'Hide Names';
+                btn.classList.remove('bg-gray-800', 'text-white', 'hover:bg-gray-900');
+                btn.classList.add('bg-gray-200', 'text-gray-800', 'hover:bg-gray-300');
+            }
+        }
+
+        // Chart.js Configuration
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // ================== GRADES 1-4 CHARTS ==================
+            const ctxCriteria = document.getElementById('criteriaChart').getContext('2d');
+            new Chart(ctxCriteria, {
+                type: 'bar',
+                data: {
+                    labels: ['Lesson Objectives', 'Student Engagement', 'Differentiation', 'Class Management', 'Use of Technology', 'Classroom Routines'],
+                    datasets: [{
+                        label: 'Successful Observations (Out of 12)',
+                        data: [11, 12, 11, 12, 11, 12],
+                        backgroundColor: [
+                            'rgba(59, 130, 246, 0.8)', // blue
+                            'rgba(16, 185, 129, 0.8)', // emerald
+                            'rgba(139, 92, 246, 0.8)', // purple
+                            'rgba(245, 158, 11, 0.8)', // amber
+                            'rgba(239, 68, 68, 0.8)',  // red
+                            'rgba(99, 102, 241, 0.8)'  // indigo
+                        ],
+                        borderWidth: 0,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { backgroundColor: 'rgba(17, 24, 39, 0.9)', padding: 12, titleFont: { size: 14, family: 'Inter' }, bodyFont: { size: 13, family: 'Inter' } }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, max: 12, grid: { color: 'rgba(243, 244, 246, 1)', drawBorder: false }, ticks: { font: { family: 'Inter' } } },
+                        x: { grid: { display: false, drawBorder: false }, ticks: { font: { family: 'Inter' }, maxRotation: 45, minRotation: 45 } }
+                    }
+                }
+            });
+
+            const ctxObserver = document.getElementById('observerChart').getContext('2d');
+            new Chart(ctxObserver, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Leila VP', 'Brandon Abdul-Baki', 'Sobia Gulzar'],
+                    datasets: [{
+                        data: [6, 4, 2],
+                        backgroundColor: [
+                            'rgba(59, 130, 246, 0.9)', // blue-500
+                            'rgba(99, 102, 241, 0.9)', // indigo-500
+                            'rgba(16, 185, 129, 0.9)', // emerald-500
+                        ],
+                        borderWidth: 2, borderColor: '#ffffff', hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false, cutout: '70%',
+                    plugins: { legend: { display: false }, tooltip: { backgroundColor: 'rgba(17, 24, 39, 0.9)', padding: 12, titleFont: { size: 14, family: 'Inter' }, bodyFont: { size: 13, family: 'Inter' } } }
+                }
+            });
+
+            // ================== KINDERGARTEN (KG) CHARTS ==================
+            const ctxCriteriaKG = document.getElementById('criteriaChartKG').getContext('2d');
+            new Chart(ctxCriteriaKG, {
+                type: 'bar',
+                data: {
+                    labels: ['Lesson Objectives', 'Student Engagement', 'Differentiation', 'Class Management', 'Use of Technology', 'Classroom Routines'],
+                    datasets: [{
+                        label: 'Successful Observations (Out of 4)',
+                        data: [4, 4, 4, 4, 4, 4], // KG scored perfect observed on major criteria
+                        backgroundColor: [
+                            'rgba(59, 130, 246, 0.8)', 
+                            'rgba(16, 185, 129, 0.8)', 
+                            'rgba(139, 92, 246, 0.8)', 
+                            'rgba(245, 158, 11, 0.8)', 
+                            'rgba(239, 68, 68, 0.8)',  
+                            'rgba(99, 102, 241, 0.8)'  
+                        ],
+                        borderWidth: 0,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { backgroundColor: 'rgba(17, 24, 39, 0.9)', padding: 12, titleFont: { size: 14, family: 'Inter' }, bodyFont: { size: 13, family: 'Inter' } }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, max: 4, grid: { color: 'rgba(243, 244, 246, 1)', drawBorder: false }, ticks: { font: { family: 'Inter' }, stepSize: 1 } },
+                        x: { grid: { display: false, drawBorder: false }, ticks: { font: { family: 'Inter' }, maxRotation: 45, minRotation: 45 } }
+                    }
+                }
+            });
+
+            const ctxObserverKG = document.getElementById('observerChartKG').getContext('2d');
+            new Chart(ctxObserverKG, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Sobia Gulzar'],
+                    datasets: [{
+                        data: [4],
+                        backgroundColor: [
+                            'rgba(16, 185, 129, 0.9)', // emerald-500
+                        ],
+                        borderWidth: 2, borderColor: '#ffffff', hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false, cutout: '70%',
+                    plugins: { legend: { display: false }, tooltip: { backgroundColor: 'rgba(17, 24, 39, 0.9)', padding: 12, titleFont: { size: 14, family: 'Inter' }, bodyFont: { size: 13, family: 'Inter' } } }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
