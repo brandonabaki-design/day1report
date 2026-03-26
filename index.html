@@ -61,7 +61,7 @@
                 </div>
                 <div class="flex items-center gap-4">
                     <div class="text-sm text-gray-500 bg-gray-100 px-3 py-1.5 rounded-md font-medium print:hidden">
-                        Date: March 25, 2026
+                        Date: March 26, 2026
                     </div>
                     <button id="toggleNamesBtn" onclick="toggleNames()" class="print:hidden bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md text-sm font-medium transition-colors">
                         Hide Names
@@ -98,23 +98,23 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <div class="bg-white rounded-xl p-6 card-shadow border-t-4 border-blue-500">
                     <div class="text-sm font-medium text-gray-500 uppercase tracking-wide">Total Observations</div>
-                    <div class="mt-2 text-3xl font-bold text-gray-900">7</div>
-                    <div class="mt-1 text-sm text-blue-600 font-medium">Across 5 Unique Teachers</div>
+                    <div class="mt-2 text-3xl font-bold text-gray-900">10</div>
+                    <div class="mt-1 text-sm text-blue-600 font-medium">Across 6 Unique Teachers</div>
                 </div>
                 <div class="bg-white rounded-xl p-6 card-shadow border-t-4 border-emerald-500">
                     <div class="text-sm font-medium text-gray-500 uppercase tracking-wide">Overall Compliance</div>
-                    <div class="mt-2 text-3xl font-bold text-gray-900">83%</div>
-                    <div class="mt-1 text-sm text-emerald-600 font-medium">35/42 Criteria Met (Improved)</div>
+                    <div class="mt-2 text-3xl font-bold text-gray-900">92%</div>
+                    <div class="mt-1 text-sm text-emerald-600 font-medium">55/60 Criteria Met</div>
                 </div>
-                <div class="bg-white rounded-xl p-6 card-shadow border-t-4 border-amber-500">
+                <div class="bg-white rounded-xl p-6 card-shadow border-t-4 border-red-500">
                     <div class="text-sm font-medium text-gray-500 uppercase tracking-wide">Action Needed</div>
-                    <div class="mt-2 text-3xl font-bold text-gray-900">2</div>
-                    <div class="mt-1 text-sm text-amber-600 font-medium">Lessons Flagged</div>
+                    <div class="mt-2 text-3xl font-bold text-gray-900">3</div>
+                    <div class="mt-1 text-sm text-red-600 font-medium">Lessons Flagged</div>
                 </div>
                 <div class="bg-white rounded-xl p-6 card-shadow border-t-4 border-purple-500">
                     <div class="text-sm font-medium text-gray-500 uppercase tracking-wide">Key Focus Area</div>
-                    <div class="mt-2 text-xl font-bold text-gray-900 mt-3">Task Challenge</div>
-                    <div class="mt-1 text-sm text-purple-600 font-medium">Extensions requested in 43% of reports</div>
+                    <div class="mt-2 text-xl font-bold text-gray-900 mt-3">Interactive Challenge</div>
+                    <div class="mt-1 text-sm text-purple-600 font-medium">More varied levels requested</div>
                 </div>
             </div>
 
@@ -134,14 +134,18 @@
                     <div class="relative h-64 w-full flex items-center justify-center">
                         <canvas id="observerChart"></canvas>
                     </div>
-                    <div class="mt-4 flex justify-center gap-6 text-sm">
+                    <div class="mt-4 flex justify-center gap-6 text-sm flex-wrap">
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full" style="background-color: rgba(236, 72, 153, 0.9);"></div>
+                            <span class="text-gray-600 sensitive-name">Leila C.</span> <span class="text-gray-600">(5)</span>
+                        </div>
                         <div class="flex items-center gap-2">
                             <div class="w-3 h-3 rounded-full" style="background-color: rgba(99, 102, 241, 0.9);"></div>
-                            <span class="text-gray-600 sensitive-name">Brandon A.</span> <span class="text-gray-600">(4)</span>
+                            <span class="text-gray-600 sensitive-name">Brandon B.</span> <span class="text-gray-600">(4)</span>
                         </div>
                         <div class="flex items-center gap-2">
                             <div class="w-3 h-3 rounded-full" style="background-color: rgba(16, 185, 129, 0.9);"></div>
-                            <span class="text-gray-600 sensitive-name">Sobia Gulzar</span> <span class="text-gray-600">(3)</span>
+                            <span class="text-gray-600 sensitive-name">Sobia G.</span> <span class="text-gray-600">(1)</span>
                         </div>
                     </div>
                 </div>
@@ -155,17 +159,17 @@
                 <div class="bg-white rounded-xl card-shadow overflow-hidden flex flex-col">
                     <div class="bg-red-50 p-4 border-b border-red-100 flex items-center gap-3">
                         <div class="p-2 bg-red-100 text-red-700 rounded-lg">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
-                        <h3 class="font-bold text-red-900">Target Language & Structure</h3>
+                        <h3 class="font-bold text-red-900">Pacing & Teacher Talk Time</h3>
                     </div>
                     <div class="p-5 flex-1">
-                        <p class="text-sm text-gray-600 mb-4"><strong>Observation:</strong> While compliance improved today, one flagged lesson noted a lack of clear structure and a failure to consistently use the target language (English) during instruction.</p>
+                        <p class="text-sm text-gray-600 mb-4"><strong>Observation:</strong> Several morning lessons struggled heavily with pacing. Excessive Teacher Talk Time (TTT) is causing lost learning time, leaving students waiting rather than actively engaging with tasks.</p>
                         <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
                             <p class="text-xs font-bold text-gray-500 uppercase mb-2">Suggested Action</p>
                             <ul class="text-sm text-gray-800 space-y-2 list-disc pl-4">
-                                <li>Reiterate school policy on maintaining English as the primary medium of instruction.</li>
-                                <li>Require structured lesson outlines with explicit pacing for struggling teachers.</li>
+                                <li>Instruct teachers to use digital timers during the "Explain" phase to cap lecturing.</li>
+                                <li>Shift structure to facilitate independent tasks earlier in the session.</li>
                             </ul>
                         </div>
                     </div>
@@ -173,18 +177,19 @@
 
                 <!-- Insight 2 -->
                 <div class="bg-white rounded-xl card-shadow overflow-hidden flex flex-col">
-                    <div class="bg-blue-50 p-4 border-b border-blue-100 flex items-center gap-3">
-                        <div class="p-2 bg-blue-100 text-blue-700 rounded-lg">
+                    <div class="bg-purple-50 p-4 border-b border-purple-100 flex items-center gap-3">
+                        <div class="p-2 bg-purple-100 text-purple-700 rounded-lg">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
                         </div>
-                        <h3 class="font-bold text-blue-900">Pushing the Ceiling</h3>
+                        <h3 class="font-bold text-purple-900">Interactive Engagement</h3>
                     </div>
                     <div class="p-5 flex-1">
-                        <p class="text-sm text-gray-600 mb-4"><strong>Observation:</strong> Several lessons achieved full compliance ("All Observed") but received specific feedback requesting the inclusion of more challenging activities and extension tasks.</p>
+                        <p class="text-sm text-gray-600 mb-4"><strong>Observation:</strong> While afternoon sessions showed 100% compliance, observers noted the need to push the ceiling by adding more interactive elements and varied challenge levels (differentiation) to stimulate critical thinking.</p>
                         <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
                             <p class="text-xs font-bold text-gray-500 uppercase mb-2">Suggested Action</p>
                             <ul class="text-sm text-gray-800 space-y-2 list-disc pl-4">
-                                <li>Create a repository of "Challenge Cards" that teachers can easily drop into their online workspaces for early finishers.</li>
+                                <li>Require 2-3 specific higher-order discussion questions in weekly lesson plans.</li>
+                                <li>Introduce digital tools that allow simultaneous, interactive student responses.</li>
                             </ul>
                         </div>
                     </div>
@@ -194,16 +199,16 @@
                 <div class="bg-white rounded-xl card-shadow overflow-hidden flex flex-col">
                     <div class="bg-amber-50 p-4 border-b border-amber-100 flex items-center gap-3">
                         <div class="p-2 bg-amber-100 text-amber-700 rounded-lg">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                         </div>
-                        <h3 class="font-bold text-amber-900">Behavior Systems</h3>
+                        <h3 class="font-bold text-amber-900">Peer Observation Cycles</h3>
                     </div>
                     <div class="p-5 flex-1">
-                        <p class="text-sm text-gray-600 mb-4"><strong>Observation:</strong> While rapport is generally high across the phase, some lessons lack a formalized structure for positive reinforcement or managing off-task behavior.</p>
+                        <p class="text-sm text-gray-600 mb-4"><strong>Observation:</strong> Observers noted a stark contrast in delivery quality today, with strong commendations for classes like 4B Math and afternoon sessions, alongside critical flags in others.</p>
                         <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
                             <p class="text-xs font-bold text-gray-500 uppercase mb-2">Suggested Action</p>
                             <ul class="text-sm text-gray-800 space-y-2 list-disc pl-4">
-                                <li>Encourage the consistent use of digital reward systems (e.g., ClassDojo points) to standardize behavior expectations.</li>
+                                <li>Formalize peer observations immediately. Struggling teachers should be scheduled to observe high-performing peers this week.</li>
                             </ul>
                         </div>
                     </div>
@@ -215,7 +220,7 @@
             <div class="bg-white rounded-xl card-shadow overflow-hidden">
                 <div class="px-6 py-5 border-b border-gray-200 flex justify-between items-center bg-gray-50">
                     <h3 class="text-lg font-bold text-gray-900">Observation Log: Grades 1-4</h3>
-                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">7 Records</span>
+                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">10 Records</span>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-sm text-left">
@@ -230,62 +235,86 @@
                         </thead>
                         <tbody class="divide-y divide-gray-200">
                             
-                            <tr class="hover:bg-red-50 transition-colors">
-                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Shaafia</span><br><span class="text-xs text-gray-500 font-normal">General</span></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">10:04</td>
-                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Brandon A.</span></td>
-                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-red-500 inline-block mr-2"></span>Action Needed</td>
-                                <td class="px-6 py-4 text-gray-800 font-medium">Consider implementing a clearer reward/consequence system. Lesson objectives were not observed.</td>
-                            </tr>
-                            
-                            <tr class="hover:bg-gray-50">
-                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Haneen</span><br><span class="text-xs text-gray-500 font-normal">General</span></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">10:03</td>
-                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Brandon A.</span></td>
-                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
-                                <td class="px-6 py-4 text-gray-600">Excellent rapport established with the students. Pacing was appropriate. Good use of scaffolding.</td>
-                            </tr>
-                            
-                            <tr class="hover:bg-gray-50">
-                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Nada Ezzat</span><br><span class="text-xs text-gray-500 font-normal">General</span></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">10:01</td>
-                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Brandon A.</span></td>
-                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
-                                <td class="px-6 py-4 text-gray-600">High level of student participation observed. Extension tasks were available. You continue to excel!</td>
-                            </tr>
-                            
-                            <tr class="hover:bg-gray-50">
-                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Hager</span><br><span class="text-xs text-gray-500 font-normal">General</span></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">09:59</td>
-                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Brandon A.</span></td>
-                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
-                                <td class="px-6 py-4 text-gray-600">Objectives clearly visible. High level of student participation. Effective support provided for SEN students.</td>
-                            </tr>
-                            
-                            <tr class="hover:bg-red-50 transition-colors">
-                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Miss Raina</span><br><span class="text-xs text-gray-500 font-normal">General</span></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">10:55</td>
-                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Sobia Gulzar</span></td>
-                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-red-500 inline-block mr-2"></span>Action Needed</td>
-                                <td class="px-6 py-4 text-gray-800 font-medium">Need to strengthen lesson structure and planning. Maintain consistent use of the target language.</td>
-                            </tr>
-                            
-                            <tr class="hover:bg-gray-50">
-                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Miss Hanenen</span><br><span class="text-xs text-gray-500 font-normal">General</span></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">11:40</td>
-                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Sobia Gulzar</span></td>
-                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
-                                <td class="px-6 py-4 text-gray-600">Well-structured with clear objectives. Students actively engaged. Consider adding more challenging activities.</td>
-                            </tr>
-                            
-                            <tr class="hover:bg-gray-50">
-                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Miss Shaafia</span><br><span class="text-xs text-gray-500 font-normal">General</span></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">23:50</td>
-                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Sobia Gulzar</span></td>
-                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
-                                <td class="px-6 py-4 text-gray-600">Well-structured with clear objectives on tenses. Adding more challenging tasks will support learning.</td>
+                            <tr class="hover:bg-amber-50 transition-colors">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Nada Atef</span><br><span class="text-xs text-gray-500 font-normal">1B English</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">08:30</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Leila Chammas</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-amber-500 inline-block mr-2"></span>Partial / Flagged</td>
+                                <td class="px-6 py-4 text-gray-800 font-medium">Fair lesson. Good video use but pacing is an issue. Almost mid-lesson and still in the explain phase. Be mindful of excessive teacher talk time.</td>
                             </tr>
 
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Nada Izzat</span><br><span class="text-xs text-gray-500 font-normal">2B English</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">09:00</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Leila Chammas</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Good lesson overall. Excellent class management. I can clearly see learning and student attainment and progress. Well done!</td>
+                            </tr>
+
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Hager</span><br><span class="text-xs text-gray-500 font-normal">4B Math</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">09:02</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Leila Chammas</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Lesson was a solid good! Excellent overall lesson delivery and presence. Strong subject knowledge demonstrated.</td>
+                            </tr>
+
+                            <tr class="hover:bg-red-50 transition-colors">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Heba</span><br><span class="text-xs text-gray-500 font-normal">2C Science</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">09:40</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Leila Chammas</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-red-500 inline-block mr-2"></span>Action Needed</td>
+                                <td class="px-6 py-4 text-gray-800 font-medium">Lesson delivery is weak. Excessive teacher talk time. A lot of teaching time was lost by spending half the lesson reading quiz questions. Advised peer observation.</td>
+                            </tr>
+                            
+                            <tr class="hover:bg-red-50 transition-colors">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Miss Shahida</span><br><span class="text-xs text-gray-500 font-normal">General</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">11:00</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Sobia Gulzar</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-red-500 inline-block mr-2"></span>Action Needed</td>
+                                <td class="px-6 py-4 text-gray-800 font-medium">Below expectations in terms of delivery and student engagement. Need to strengthen lesson planning and questioning techniques.</td>
+                            </tr>
+
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Rania</span><br><span class="text-xs text-gray-500 font-normal">3A English</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">11:26</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Leila Chammas</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Lesson environment is positive. Teacher is providing feedback. Some students are engaged. Avoid excessive teacher talk time.</td>
+                            </tr>
+
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Rania</span><br><span class="text-xs text-gray-500 font-normal">General</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">14:37</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Brandon A. Baki</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Excellent use of questioning to stimulate critical thinking. Consider providing more varied levels of challenge and establishing clearer routines.</td>
+                            </tr>
+
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Nada A</span><br><span class="text-xs text-gray-500 font-normal">General</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">14:39</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Brandon A. Baki</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Smooth transitions. Consider using more interactive elements to boost engagement and implementing a clearer reward/consequence system.</td>
+                            </tr>
+
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Hager</span><br><span class="text-xs text-gray-500 font-normal">General</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">14:40</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Brandon A. Baki</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Objectives clearly visible. High level of student participation observed. Effective support provided for SEN students.</td>
+                            </tr>
+
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Nada E</span><br><span class="text-xs text-gray-500 font-normal">General</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">14:40</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Brandon A. Baki</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Positive and encouraging learning environment maintained. High level of student participation and effective SEN support.</td>
+                            </tr>
+                            
                         </tbody>
                     </table>
                 </div>
@@ -300,13 +329,13 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <div class="bg-white rounded-xl p-6 card-shadow border-t-4 border-blue-500">
                     <div class="text-sm font-medium text-gray-500 uppercase tracking-wide">Total KG Observations</div>
-                    <div class="mt-2 text-3xl font-bold text-gray-900">1</div>
-                    <div class="mt-1 text-sm text-blue-600 font-medium">Across 1 Teacher</div>
+                    <div class="mt-2 text-3xl font-bold text-gray-900">4</div>
+                    <div class="mt-1 text-sm text-blue-600 font-medium">Across 4 Unique Teachers</div>
                 </div>
                 <div class="bg-white rounded-xl p-6 card-shadow border-t-4 border-emerald-500">
                     <div class="text-sm font-medium text-gray-500 uppercase tracking-wide">Overall Compliance</div>
-                    <div class="mt-2 text-3xl font-bold text-gray-900">100%</div>
-                    <div class="mt-1 text-sm text-emerald-600 font-medium">6/6 Criteria Met</div>
+                    <div class="mt-2 text-3xl font-bold text-gray-900">96%</div>
+                    <div class="mt-1 text-sm text-emerald-600 font-medium">23/24 Criteria Met</div>
                 </div>
                 <div class="bg-white rounded-xl p-6 card-shadow border-t-4 border-emerald-500">
                     <div class="text-sm font-medium text-gray-500 uppercase tracking-wide">Tech Utilization</div>
@@ -315,8 +344,8 @@
                 </div>
                 <div class="bg-white rounded-xl p-6 card-shadow border-t-4 border-purple-500">
                     <div class="text-sm font-medium text-gray-500 uppercase tracking-wide">Key Focus Area</div>
-                    <div class="mt-2 text-xl font-bold text-gray-900 mt-3">Individual Checks</div>
-                    <div class="mt-1 text-sm text-purple-600 font-medium">Noted in feedback</div>
+                    <div class="mt-2 text-xl font-bold text-gray-900 mt-3">Participation</div>
+                    <div class="mt-1 text-sm text-purple-600 font-medium">Requested in multiple reports</div>
                 </div>
             </div>
 
@@ -339,7 +368,7 @@
                     <div class="mt-4 flex justify-center gap-6 text-sm">
                         <div class="flex items-center gap-2">
                             <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
-                            <span class="text-gray-600 sensitive-name">Sobia Gulzar</span> <span class="text-gray-600">(1)</span>
+                            <span class="text-gray-600 sensitive-name">Sobia Gulzar</span> <span class="text-gray-600">(4)</span>
                         </div>
                     </div>
                 </div>
@@ -355,14 +384,14 @@
                         <div class="p-2 bg-purple-100 text-purple-700 rounded-lg">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                         </div>
-                        <h3 class="font-bold text-purple-900">Individual Checks for Understanding</h3>
+                        <h3 class="font-bold text-purple-900">Maximizing Student Participation</h3>
                     </div>
                     <div class="p-5 flex-1">
-                        <p class="text-sm text-gray-600 mb-4"><strong>Observation:</strong> While the lesson was generally well-delivered and highly engaging, the observer noted that checking for individual understanding across the digital classroom needs to be prioritized over whole-group responses.</p>
+                        <p class="text-sm text-gray-600 mb-4"><strong>Observation:</strong> Across several lessons today (Science, Phonics, and General), observers noted that while engagement was high, teachers need to consciously provide more opportunities for hands-on activities, show-and-tell, and involving quieter students.</p>
                         <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
                             <p class="text-xs font-bold text-gray-500 uppercase mb-2">Suggested Action</p>
                             <ul class="text-sm text-gray-800 space-y-2 list-disc pl-4">
-                                <li>Incorporate specific digital tools (like individual digital whiteboards or directed mic-unmuting) to isolate and assess individual student progress.</li>
+                                <li>Incorporate specific digital tools (like individual digital whiteboards) or simple home-based items to keep all students physically interacting during the lesson.</li>
                             </ul>
                         </div>
                     </div>
@@ -374,14 +403,14 @@
                         <div class="p-2 bg-blue-100 text-blue-700 rounded-lg">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
-                        <h3 class="font-bold text-blue-900">Effective Phonics Delivery</h3>
+                        <h3 class="font-bold text-blue-900">Strong Phonics Foundations</h3>
                     </div>
                     <div class="p-5 flex-1">
-                        <p class="text-sm text-gray-600 mb-4"><strong>Observation:</strong> The teacher successfully introduced phonics (the /j/ sound) using a strong combination of visual aids and interactive questioning, demonstrating best practices for early years online learning.</p>
+                        <p class="text-sm text-gray-600 mb-4"><strong>Observation:</strong> Multiple teachers successfully introduced CVC words (specifically "-op" words) using a strong combination of visual aids, phonics strategies, and repetition, leading to confident student reading.</p>
                         <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
                             <p class="text-xs font-bold text-gray-500 uppercase mb-2">Suggested Action</p>
                             <ul class="text-sm text-gray-800 space-y-2 list-disc pl-4">
-                                <li>Share this lesson's visual and interactive strategies as a positive case study during the next KG departmental meeting.</li>
+                                <li>Share these successful visual and blending strategies as a positive case study during the next KG departmental meeting.</li>
                             </ul>
                         </div>
                     </div>
@@ -393,7 +422,7 @@
             <div class="bg-white rounded-xl card-shadow overflow-hidden">
                 <div class="px-6 py-5 border-b border-gray-200 flex justify-between items-center bg-gray-50">
                     <h3 class="text-lg font-bold text-gray-900">Observation Log: Kindergarten</h3>
-                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">1 Record</span>
+                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">4 Records</span>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-sm text-left">
@@ -407,13 +436,39 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
+                            
                             <tr class="hover:bg-gray-50">
-                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Miss Iman</span><br><span class="text-xs text-gray-500 font-normal">KG</span></td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">09:30</td>
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Miss Mona</span><br><span class="text-xs text-gray-500 font-normal">Science</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">08:00</td>
                                 <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Sobia Gulzar</span></td>
                                 <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
-                                <td class="px-6 py-4 text-gray-600">Well-structured and engaging. Incorporating more individual participation will further enhance progress.</td>
+                                <td class="px-6 py-4 text-gray-600">Science lesson was well-delivered. Incorporate more hands-on exploration and higher-level questioning.</td>
                             </tr>
+                            
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Miss Iman</span><br><span class="text-xs text-gray-500 font-normal">Phonics</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">08:30</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Sobia Gulzar</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Effective phonics strategies for CVC words. Try to involve quieter students more frequently.</td>
+                            </tr>
+                            
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Miss Razeena</span><br><span class="text-xs text-gray-500 font-normal">General</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">08:44</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Sobia Gulzar</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block mr-2"></span>All Observed</td>
+                                <td class="px-6 py-4 text-gray-600">Well-structured. Can include simple home-based activities and interactive tasks such as show-and-tell.</td>
+                            </tr>
+
+                            <tr class="hover:bg-amber-50 transition-colors">
+                                <td class="px-6 py-4 font-medium text-gray-900"><span class="sensitive-name">Adiba</span><br><span class="text-xs text-gray-500 font-normal">Phonics</span></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">22:40</td>
+                                <td class="px-6 py-4 whitespace-nowrap"><span class="sensitive-name inline-flex items-center gap-1.5 py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-800">Sobia Gulzar</span></td>
+                                <td class="px-6 py-4"><span class="w-3 h-3 rounded-full bg-amber-500 inline-block mr-2"></span>Partial (1 Missed)</td>
+                                <td class="px-6 py-4 text-gray-800 font-medium">Clear focus on "-op" words. Increasing opportunities for blending practice and student participation will strengthen outcomes. Differentiation not observed.</td>
+                            </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -462,15 +517,15 @@
         document.addEventListener('DOMContentLoaded', function() {
             
             // ================== GRADES 1-4 CHARTS ==================
-            // Recalculated based on the 7 March 25th observations
+            // Updated based on today's 10 observations
             const ctxCriteria = document.getElementById('criteriaChart').getContext('2d');
             new Chart(ctxCriteria, {
                 type: 'bar',
                 data: {
                     labels: ['Lesson Objectives', 'Student Engagement', 'Differentiation', 'Class Management', 'Use of Technology', 'Classroom Routines'],
                     datasets: [{
-                        label: 'Successful Observations (Out of 7)',
-                        data: [6, 5, 6, 6, 6, 6], 
+                        label: 'Successful Observations (Out of 10)',
+                        data: [10, 8, 9, 10, 9, 9], 
                         backgroundColor: [
                             'rgba(59, 130, 246, 0.8)', // blue
                             'rgba(16, 185, 129, 0.8)', // emerald
@@ -491,7 +546,7 @@
                         tooltip: { backgroundColor: 'rgba(17, 24, 39, 0.9)', padding: 12, titleFont: { size: 14, family: 'Inter' }, bodyFont: { size: 13, family: 'Inter' } }
                     },
                     scales: {
-                        y: { beginAtZero: true, max: 7, grid: { color: 'rgba(243, 244, 246, 1)', drawBorder: false }, ticks: { font: { family: 'Inter' }, stepSize: 1 } },
+                        y: { beginAtZero: true, max: 10, grid: { color: 'rgba(243, 244, 246, 1)', drawBorder: false }, ticks: { font: { family: 'Inter' }, stepSize: 1 } },
                         x: { grid: { display: false, drawBorder: false }, ticks: { font: { family: 'Inter' }, maxRotation: 45, minRotation: 45 } }
                     }
                 }
@@ -501,12 +556,13 @@
             new Chart(ctxObserver, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Brandon Abdul-Baki', 'Sobia Gulzar'],
+                    labels: ['Leila Chammas', 'Sobia Gulzar', 'Brandon A. Baki'],
                     datasets: [{
-                        data: [4, 3],
+                        data: [5, 1, 4],
                         backgroundColor: [
-                            'rgba(99, 102, 241, 0.9)', // indigo-500
-                            'rgba(16, 185, 129, 0.9)'  // emerald-500
+                            'rgba(236, 72, 153, 0.9)', // pink-500
+                            'rgba(16, 185, 129, 0.9)', // emerald-500
+                            'rgba(99, 102, 241, 0.9)'  // indigo-500
                         ],
                         borderWidth: 2, borderColor: '#ffffff', hoverOffset: 4
                     }]
@@ -518,14 +574,15 @@
             });
 
             // ================== KINDERGARTEN (KG) CHARTS ==================
+            // Maintained based on today's 4 observations
             const ctxCriteriaKG = document.getElementById('criteriaChartKG').getContext('2d');
             new Chart(ctxCriteriaKG, {
                 type: 'bar',
                 data: {
                     labels: ['Lesson Objectives', 'Student Engagement', 'Differentiation', 'Class Management', 'Use of Technology', 'Classroom Routines'],
                     datasets: [{
-                        label: 'Successful Observations (Out of 1)',
-                        data: [1, 1, 1, 1, 1, 1], // Miss Iman hit all 6 checks
+                        label: 'Successful Observations (Out of 4)',
+                        data: [4, 4, 3, 4, 4, 4], // Miss Adiba missed Differentiation
                         backgroundColor: [
                             'rgba(59, 130, 246, 0.8)', 
                             'rgba(16, 185, 129, 0.8)', 
@@ -546,7 +603,7 @@
                         tooltip: { backgroundColor: 'rgba(17, 24, 39, 0.9)', padding: 12, titleFont: { size: 14, family: 'Inter' }, bodyFont: { size: 13, family: 'Inter' } }
                     },
                     scales: {
-                        y: { beginAtZero: true, max: 1, grid: { color: 'rgba(243, 244, 246, 1)', drawBorder: false }, ticks: { font: { family: 'Inter' }, stepSize: 1 } },
+                        y: { beginAtZero: true, max: 4, grid: { color: 'rgba(243, 244, 246, 1)', drawBorder: false }, ticks: { font: { family: 'Inter' }, stepSize: 1 } },
                         x: { grid: { display: false, drawBorder: false }, ticks: { font: { family: 'Inter' }, maxRotation: 45, minRotation: 45 } }
                     }
                 }
@@ -558,7 +615,7 @@
                 data: {
                     labels: ['Sobia Gulzar'],
                     datasets: [{
-                        data: [1],
+                        data: [4],
                         backgroundColor: [
                             'rgba(16, 185, 129, 0.9)' // emerald-500
                         ],
